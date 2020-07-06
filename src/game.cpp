@@ -23,8 +23,8 @@ void Game::Run(Controller const &controller, Renderer &renderer,
     frame_start = SDL_GetTicks();
 
     // Input, Update, Render - the main game loop.
-    controller.HandleInput(running, snake);
-    Update();
+    controller.HandleInput(running, snake, *this);
+    Update(renderer);
     renderer.Render(snake, food);
 
     frame_end = SDL_GetTicks();
@@ -65,7 +65,14 @@ void Game::PlaceFood() {
   }
 }
 
-void Game::Update() {
+void Game::Update(Renderer &renderer) {
+
+  if(this->_paused){
+    renderer.RenderPauseTitle();
+    return;
+  }
+
+
   if (!snake.alive) return;
 
   snake.Update();
@@ -85,3 +92,18 @@ void Game::Update() {
 
 int Game::GetScore() const { return score; }
 int Game::GetSize() const { return snake.size; }
+
+void Game::TogglePause(){
+  if (this->_paused){
+      Resume();
+    }
+  else Pause(); 
+}
+
+void Game::Pause(){
+  this->_paused = true;
+}
+
+void Game::Resume(){
+  this->_paused = false;
+}

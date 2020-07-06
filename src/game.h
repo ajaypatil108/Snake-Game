@@ -14,11 +14,14 @@ class Game {
            std::size_t target_frame_duration);
   int GetScore() const;
   int GetSize() const;
+  void TogglePause();
 
+  friend class Controller;
  private:
   Snake snake;
   SDL_Point food;
 
+  bool _paused;
   std::random_device dev;
   std::mt19937 engine;
   std::uniform_int_distribution<int> random_w;
@@ -26,8 +29,10 @@ class Game {
 
   int score{0};
 
+  void Pause();
+  void Resume();
   void PlaceFood();
-  void Update();
+  void Update(Renderer &renderer);
 };
 
 #endif
