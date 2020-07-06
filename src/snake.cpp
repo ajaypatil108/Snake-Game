@@ -59,8 +59,13 @@ void Snake::UpdateBody(SDL_Point &current_head_cell, SDL_Point &prev_head_cell) 
   for (auto const &item : body) {
     if (current_head_cell.x == item.x && current_head_cell.y == item.y) {
       alive = false;
+      RenderDiedDialog();
     }
   }
+}
+
+void Snake::RenderDiedDialog(){
+      SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION, "Snake is dead","Better luck next time!", NULL);
 }
 
 void Snake::GrowBody() { growing = true; }
