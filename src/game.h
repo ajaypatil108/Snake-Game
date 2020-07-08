@@ -16,7 +16,6 @@ class Game {
   int GetSize() const;
   void TogglePause();
 
-  friend class Controller;
  private:
   Snake snake;
   SDL_Point food;
