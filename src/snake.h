@@ -1,8 +1,8 @@
 #ifndef SNAKE_H
 #define SNAKE_H
-#include "scorelog.h"
 #include <vector>
 #include "SDL.h"
+#include "scorelog.h"
 
 class Snake {
  public:

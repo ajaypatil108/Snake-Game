@@ -13,6 +13,7 @@ class ScoreLog{
   void ParseLog();
   void WriteToLog(int score, std::string name);
 
+
  private:
   int _highestScore;
   std::string _HighestScorePlayer;

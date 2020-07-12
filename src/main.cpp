@@ -18,9 +18,10 @@ int main() {
 
 
   std::string name;
+  std::string answer;
   std::cout << "Enter your name " << "\n"; 
   std::cin >> name;
-
+ 
   std::cout << "Hey " << name << ", can you beat the high score of " << log.GetHighestScore() <<  " set by " << log.GetHighestScorePlayer() << "?" << "\n";
 
 
@@ -33,9 +34,13 @@ int main() {
   std::cout << "Size: " << game.GetSize() << "\n";
 
   if (game.GetScore() > log.GetHighestScore()){
+    std::cout << "Well played! Your name & score will stay on the board until someone else beats you!" << "\n";
     log.WriteToLog(game.GetScore(), name);
   }
 
-
+  else{
+    std::cout << "You could not beat the high score. You needed "  << (log.GetHighestScore() - game.GetScore() + 1) << " points to win. Better luck next time!" << "\n" ;
+  }
+ 
   return 0;
 }
