@@ -26,7 +26,7 @@ void ScoreLog::SetHighestScorePlayer(std::string name){
 }
 
 void ScoreLog::WriteToLog(int score, std::string name){
-    std::cout << "Fuck Yeah!" ;
+    std::cout << "It worked!" ;
 }
 
 void ScoreLog::ParseLog(){
