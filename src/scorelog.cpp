@@ -26,7 +26,10 @@ void ScoreLog::SetHighestScorePlayer(std::string name){
 }
 
 void ScoreLog::WriteToLog(int score, std::string name){
-    std::cout << "It worked!" ;
+    std::ofstream writeToFile;
+    writeToFile.open("../src/highscore.txt", std::ofstream::out | std::ofstream::trunc);
+    writeToFile << score << " " << name << "\n";   
+    writeToFile.close();
 }
 
 void ScoreLog::ParseLog(){
