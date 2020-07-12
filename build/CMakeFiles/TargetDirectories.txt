@@ -1,0 +1,3 @@
+/home/fury/Snake-Game/build/CMakeFiles/rebuild_cache.dir
+/home/fury/Snake-Game/build/CMakeFiles/edit_cache.dir
+/home/fury/Snake-Game/build/CMakeFiles/SnakeGame.dir
