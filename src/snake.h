@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "SDL.h"
+#include "scorelog.h"
 
 class Snake {
  public:
@@ -18,7 +19,6 @@ class Snake {
 
   void GrowBody();
   bool SnakeCell(int x, int y);
-  void RenderDiedDialog();
 
   Direction direction = Direction::kUp;
 
@@ -28,6 +28,8 @@ class Snake {
   float head_x;
   float head_y;
   std::vector<SDL_Point> body;
+  void RenderRelativeScoreMsg();
+
 
  private:
   void UpdateHead(bool *boundary);

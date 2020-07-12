@@ -15,12 +15,12 @@ class Game {
   void TogglePause();
   int GetScore() const;
   int GetSize() const;
-  bool _boundary;
+  bool _boundary = false;
 
  private:
   Snake snake;
   SDL_Point food;
-  bool _paused;
+  bool _paused = false;
   std::random_device dev;
   std::mt19937 engine;
   std::uniform_int_distribution<int> random_w;

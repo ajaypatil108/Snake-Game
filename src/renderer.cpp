@@ -47,13 +47,6 @@ void Renderer::Render(Snake const snake, SDL_Point const &food, bool *boundary) 
   SDL_SetRenderDrawColor(sdl_renderer, 0x1E, 0x1E, 0x1E, 0xFF);
   SDL_RenderClear(sdl_renderer);
 
-  // Render red boundary around the screen
-  if (*boundary){
-    SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0x00, 0x00, 0xFF);
-    SDL_Rect box = {0,0,screen_width,screen_height};
-    SDL_RenderDrawRect(sdl_renderer, &box);
-  }
-
   // Render food
   SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0xCC, 0x00, 0xFF);
   block.x = food.x * block.w;
@@ -78,6 +71,12 @@ void Renderer::Render(Snake const snake, SDL_Point const &food, bool *boundary) 
   }
   SDL_RenderFillRect(sdl_renderer, &block);
 
+  // Render red boundary around the screen
+  if (*boundary){
+    SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0x00, 0x00, 0xFF);
+    SDL_Rect red_boundary = {0,0,640,640};
+    SDL_RenderDrawRect(sdl_renderer, &red_boundary);
+  }
   // Update Screen
   SDL_RenderPresent(sdl_renderer);
 }
@@ -88,6 +87,6 @@ void Renderer::UpdateWindowTitle(int score, int fps) {
 }
 
 void Renderer::RenderPauseTitle(){
-  std::string title{"(PAUSED). Press p to resume"};
-  SDL_SetWindowTitle(sdl_window, title.c_str());
+    std::string title{"(PAUSED). Press ESC to resume"};
+    SDL_SetWindowTitle(sdl_window, title.c_str());
 }

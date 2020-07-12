@@ -41,8 +41,8 @@ void Snake::UpdateHead(bool *boundary) {
   //Check status of boundary
   if (*boundary){
     if (head_x > grid_width || head_y > grid_height || head_x < 0 || head_y < 0){
-      RenderDiedDialog();
       alive = false;
+      RenderRelativeScoreMsg();
     }
   }
   else{
@@ -68,13 +68,10 @@ void Snake::UpdateBody(SDL_Point &current_head_cell, SDL_Point &prev_head_cell) 
   for (auto const &item : body) {
     if (current_head_cell.x == item.x && current_head_cell.y == item.y) {
       alive = false;
-      RenderDiedDialog();
+      RenderRelativeScoreMsg();
+                
     }
   }
-}
-
-void Snake::RenderDiedDialog(){
-      SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION, "Snake dead","Better luck next time!", NULL);
 }
 
 void Snake::GrowBody() { growing = true; }
@@ -90,4 +87,8 @@ bool Snake::SnakeCell(int x, int y) {
     }
   }
   return false;
+}
+
+void Snake::RenderRelativeScoreMsg(){
+      SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION, "Snake dead","You couldn't beat the high score. Better luck next time!", NULL);
 }
