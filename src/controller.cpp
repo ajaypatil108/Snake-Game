@@ -36,9 +36,15 @@ void Controller::HandleInput(bool &running, Snake &snake, Game &game) const {
           ChangeDirection(snake, Snake::Direction::kRight,
                           Snake::Direction::kLeft);
           break;
+        // toggle boundary
+        case SDLK_b:
+          if (game._boundary){
+            game._boundary = false; 
+          } 
+          else game._boundary = true;
 
-        // 'ESCAPE' key press pauses the game
-        case SDLK_ESCAPE:
+        // 'p' key press pauses the game
+        case SDLK_p:
          game.TogglePause();
         break;
       }

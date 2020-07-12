@@ -12,14 +12,14 @@ class Game {
   Game(std::size_t grid_width, std::size_t grid_height);
   void Run(Controller const &controller, Renderer &renderer,
            std::size_t target_frame_duration);
+  void TogglePause();
   int GetScore() const;
   int GetSize() const;
-  void TogglePause();
+  bool _boundary;
 
  private:
   Snake snake;
   SDL_Point food;
-
   bool _paused;
   std::random_device dev;
   std::mt19937 engine;

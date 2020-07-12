@@ -2,12 +2,12 @@
 #include <cmath>
 #include <iostream>
 
-void Snake::Update() {
+void Snake::Update(bool *boundary) {
   SDL_Point prev_cell{
       static_cast<int>(head_x),
       static_cast<int>(
           head_y)};  // We first capture the head's cell before updating.
-  UpdateHead();
+  UpdateHead(boundary);
   SDL_Point current_cell{
       static_cast<int>(head_x),
       static_cast<int>(head_y)};  // Capture the head's cell after updating.
@@ -19,7 +19,7 @@ void Snake::Update() {
   }
 }
 
-void Snake::UpdateHead() {
+void Snake::UpdateHead(bool *boundary) {
   switch (direction) {
     case Direction::kUp:
       head_y -= speed;
@@ -38,9 +38,18 @@ void Snake::UpdateHead() {
       break;
   }
 
+  //Check status of boundary
+  if (*boundary){
+    if (head_x > grid_width || head_y > grid_height || head_x < 0 || head_y < 0){
+      RenderDiedDialog();
+      alive = false;
+    }
+  }
+  else{
   // Wrap the Snake around to the beginning if going off of the screen.
   head_x = fmod(head_x + grid_width, grid_width);
   head_y = fmod(head_y + grid_height, grid_height);
+  }
 }
 
 void Snake::UpdateBody(SDL_Point &current_head_cell, SDL_Point &prev_head_cell) {
@@ -65,7 +74,7 @@ void Snake::UpdateBody(SDL_Point &current_head_cell, SDL_Point &prev_head_cell) 
 }
 
 void Snake::RenderDiedDialog(){
-      SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION, "Snake is dead","Better luck next time!", NULL);
+      SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION, "Snake dead","Better luck next time!", NULL);
 }
 
 void Snake::GrowBody() { growing = true; }
