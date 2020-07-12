@@ -1,19 +1,19 @@
 #ifndef SNAKE_H
 #define SNAKE_H
-
+#include "scorelog.h"
 #include <vector>
 #include "SDL.h"
-#include "scorelog.h"
 
 class Snake {
  public:
   enum class Direction { kUp, kDown, kLeft, kRight };
 
-  Snake(int grid_width, int grid_height)
-      : grid_width(grid_width),
+  Snake(int grid_width, int grid_height ,int *score)
+      : _score(score),
+        grid_width(grid_width),
         grid_height(grid_height),
         head_x(grid_width / 2),
-        head_y(grid_height / 2) {}
+        head_y(grid_height / 2){}
 
   void Update(bool *boundary);
 
@@ -30,7 +30,6 @@ class Snake {
   std::vector<SDL_Point> body;
   void RenderRelativeScoreMsg();
 
-
  private:
   void UpdateHead(bool *boundary);
   void UpdateBody(SDL_Point &current_cell, SDL_Point &prev_cell);
@@ -38,6 +37,7 @@ class Snake {
   bool growing{false};
   int grid_width;
   int grid_height;
+  int *_score;
 };
 
 #endif

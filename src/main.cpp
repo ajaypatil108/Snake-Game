@@ -4,6 +4,7 @@
 #include "renderer.h"
 #include "scorelog.h"
 
+
 int main() {
   constexpr std::size_t kFramesPerSecond{60};
   constexpr std::size_t kMsPerFrame{1000 / kFramesPerSecond};
@@ -14,6 +15,7 @@ int main() {
 
   ScoreLog log(0,"NoName");
   log.ParseLog();
+
 
   std::string name;
   std::cout << "Enter your name " << "\n"; 
@@ -29,5 +31,11 @@ int main() {
   std::cout << "Game has terminated successfully!\n";
   std::cout << "Score: " << game.GetScore() << "\n";  
   std::cout << "Size: " << game.GetSize() << "\n";
+
+  if (game.GetScore() > log.GetHighestScore()){
+    log.WriteToLog(game.GetScore(), name);
+  }
+
+
   return 0;
 }

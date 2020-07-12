@@ -1,6 +1,7 @@
 #include "snake.h"
 #include <cmath>
 #include <iostream>
+#include "scorelog.h"
 
 void Snake::Update(bool *boundary) {
   SDL_Point prev_cell{
@@ -89,6 +90,10 @@ bool Snake::SnakeCell(int x, int y) {
   return false;
 }
 
+
 void Snake::RenderRelativeScoreMsg(){
-      SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION, "Snake dead","You couldn't beat the high score. Better luck next time!", NULL);
+    std::string msgText{"Score: " + std::to_string(*_score)};
+    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION, "You died!", msgText.c_str(), NULL);
 }
+
+

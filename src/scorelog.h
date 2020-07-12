@@ -11,7 +11,7 @@ class ScoreLog{
   void SetHighestScore(int score);
   void SetHighestScorePlayer(std::string name);
   void ParseLog();
-  void WriteToLog();
+  void WriteToLog(int score, std::string name);
 
  private:
   int _highestScore;

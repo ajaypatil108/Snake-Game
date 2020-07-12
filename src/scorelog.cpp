@@ -25,6 +25,10 @@ void ScoreLog::SetHighestScorePlayer(std::string name){
     ScoreLog::_HighestScorePlayer = name;
 }
 
+void ScoreLog::WriteToLog(int score, std::string name){
+    std::cout << "Fuck Yeah!" ;
+}
+
 void ScoreLog::ParseLog(){
     std::ifstream score_file("../src/highscore.txt");
     int tempScore;
@@ -37,6 +41,7 @@ void ScoreLog::ParseLog(){
       SetHighestScore(tempScore);
       SetHighestScorePlayer(tempName);
       }
+    score_file.close();  
     }
     else ("Score file parse error!");
 }
