@@ -67,10 +67,12 @@ void Game::PlaceFood() {
 
 void Game::Update(Renderer &renderer) {
 
+  // If game is paused a pause title is rendered on the top window.
   if(this->_paused){
     renderer.RenderPauseTitle();
     return;
   }
+
 
   if (!snake.alive) return;
 
@@ -88,7 +90,7 @@ void Game::Update(Renderer &renderer) {
     snake.speed += 0.02;
   }
 }
-
+// This method toggles between Pause() and Resume() method based on state of bool _paused which can be changed with ESC key
 void Game::TogglePause(){
   if (this->_paused){
       Resume();

@@ -7,7 +7,8 @@
 
 using namespace std;
 
-ScoreLog::ScoreLog(int score, std::string name) : _highestScore(score), _HighestScorePlayer(name){};
+// Class initialization with initializer list
+ScoreLog::ScoreLog(int score, std::string name) : _highestScore(score), _HighestScorePlayer(name){}; 
 
 int ScoreLog::GetHighestScore() const{
     return _highestScore;
@@ -49,5 +50,5 @@ void ScoreLog::ParseLog(){
     else ("Score file parse error!");
 }
     
-
+ScoreLog::~ScoreLog() {};
 

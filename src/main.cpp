@@ -13,15 +13,16 @@ int main() {
   constexpr std::size_t kGridWidth{32};
   constexpr std::size_t kGridHeight{32};
 
+  // Creates a ScoreLog object that will be used to parse and write to .txt file
   ScoreLog log(0,"NoName");
   log.ParseLog();
 
-
+  // Takes current user name 
   std::string name;
-  std::string answer;
   std::cout << "Enter your name : " << " "; 
   std::cin >> name;
  
+  // Lets the user know the current highscore and the user who set it
   std::cout << "Hey " << name << ", can you beat the high score of " << log.GetHighestScore() <<  " set by " << log.GetHighestScorePlayer() << "?" << "\n";
 
 
@@ -33,11 +34,12 @@ int main() {
   std::cout << "Score: " << game.GetScore() << "\n";  
   std::cout << "Size: " << game.GetSize() << "\n";
 
+  // Writes users name and score to file only if he/she scores higher that the previously set high score. 
   if (game.GetScore() > log.GetHighestScore()){
     std::cout << "Well played! Your name & score will stay on the board until someone else beats you!" << "\n";
     log.WriteToLog(game.GetScore(), name);
   }
-
+  // If the user is not able to beat the high score, the program outputs how many points was the user short to win  
   else{
     std::cout << "You could not beat the high score. You needed "  << (log.GetHighestScore() - game.GetScore() + 1) << " points to win. Better luck next time!" << "\n" ;
   }

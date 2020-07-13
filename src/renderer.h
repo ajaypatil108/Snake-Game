@@ -13,7 +13,7 @@ class Renderer {
 
   void Render(Snake const snake, SDL_Point const &food, bool *boundary);
   void UpdateWindowTitle(int score, int fps);
-  void RenderPauseTitle();
+  void RenderPauseTitle();// Render pause title renders pause message when the game is paused
 
  private:
   SDL_Window *sdl_window;

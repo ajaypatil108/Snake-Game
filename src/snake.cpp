@@ -88,7 +88,7 @@ bool Snake::SnakeCell(int x, int y) {
   return false;
 }
 
-
+// Implemented SDL message box that renders a small window when the snake dies. 
 void Snake::RenderScoreMsg(){
     std::string msgText{"Score: " + std::to_string(*_score) + ". Hope you enjoyed the game!"};
     SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION, "Snake is dead!", msgText.c_str(), NULL);

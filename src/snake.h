@@ -7,7 +7,7 @@ class Snake {
  public:
   enum class Direction { kUp, kDown, kLeft, kRight };
 
-  Snake(int grid_width, int grid_height ,int *score)
+  Snake(int grid_width, int grid_height ,int *score) // Changed snake object initiation arguments to include score to render SDC dialog inside Snake.cpp
       : _score(score),
         grid_width(grid_width),
         grid_height(grid_height),
@@ -27,7 +27,7 @@ class Snake {
   float head_x;
   float head_y;
   std::vector<SDL_Point> body;
-  void RenderScoreMsg();
+  void RenderScoreMsg(); // Method that renders the SDL window dialog when the snake is dead
 
  private:
   void UpdateHead(bool *boundary);

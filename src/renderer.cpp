@@ -71,7 +71,7 @@ void Renderer::Render(Snake const snake, SDL_Point const &food, bool *boundary) 
   }
   SDL_RenderFillRect(sdl_renderer, &block);
 
-  // Render red boundary around the screen
+  // Render red boundary around the screen if boundary is true
   if (*boundary){
     SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0x00, 0x00, 0xFF);
     SDL_Rect red_boundary = {0,0,640,640};
@@ -86,6 +86,7 @@ void Renderer::UpdateWindowTitle(int score, int fps) {
   SDL_SetWindowTitle(sdl_window, title.c_str());
 }
 
+// Following title is rendered when the game is paused.
 void Renderer::RenderPauseTitle(){
     std::string title{"(PAUSED). Press ESC to resume"};
     SDL_SetWindowTitle(sdl_window, title.c_str());

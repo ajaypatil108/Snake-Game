@@ -62,15 +62,15 @@ In this project, I extended the Snake game by adding lots of new features, demon
 
 (a) *The project demonstrates an understanding of C++ functions and control structures.*
 
-A variety of control structures are used in this project. The `RenderScoreMsg()` function declared in `snake.h` file line 30,  is used to display a SDL Window only if alive variable of snake is false. This function is used in `snake.cpp` on lines 71 & 45. Also, in `main()`, the console output to display depends on if user was able to beat the high score or not. If-else control structure is used to compare scores and display appropriate message. Lines 36-43 in main. 
+A variety of control structures are used in this project. The `RenderScoreMsg()` function declared in `snake.h` file line 30,  is used to display a SDL Msg window only if `alive` variable of snake is `false`. This function is used in `snake.cpp` on lines 71 & 45. Also, in `main()`, the console output to display depends on if user was able to beat the high score or not. If-else control structure is used to compare scores and display appropriate message. Lines 37-45 in main. Lastly, on line 75 in `renderer.cpp`, the red box around the game is rendered only if the bool `_boundary` is true. 
 
 (b) *The project reads data from a file and process the data, or the program writes data to a file.*
 
-Also, the project reads and writes high scores to a external text file `highscore.txt`. This is implemented in `ParseLog()` and `WriteToLog` methods of the `ScoreLog`  class. The code can be found in `ScoreLog.cpp`
+The project reads and writes high scores to a external text file `highscore.txt`. This is implemented in `ParseLog()` and `WriteToLog()` methods of the `ScoreLog`  class. The code can be found in `ScoreLog.cpp` on lines 21-51. 
 
 (c) *The project accepts user input and processes the input.*
 
-The program also accepts user inputs which include `player name` on line 23 in `main.cpp`, new SDLK poll events, i.e. `ESC` key input to toggle pause/resume and `b` key press to toggle boundary. This code is in `controller.cpp` on lines 41-48.
+The program accepts user inputs which include `player name` on line 23 in `main.cpp`, new SDLK poll events, i.e. `ESC` key input to toggle pause/resume and `b` key press to toggle boundary. This code is in `controller.cpp` on lines 41-48.
 
 **2.  Object Oriented Programming**
 
@@ -86,7 +86,7 @@ All class data members are explicitly specified as public, protected, or private
 
 (c) *Class constructors utilize member initialization lists.*
 
-A constructor for class `ScoreLog()` that takes an `int` and `std::string`  is defined in the  `ScoreLog.cpp` on line 10 and is used in `main.cpp` to create a ScoreLog object on line 16.
+A constructor for class `ScoreLog()` that takes an `int` and `std::string`  is defined in the  `ScoreLog.cpp` on line 11 and is used in `main.cpp` to create a ScoreLog object on line 17.
 
 (d) *Classes abstract implementation details from their interfaces.*
 
@@ -96,7 +96,7 @@ Methods `ParseLog()` and `WriteToLog()` within `ScoreLog.cpp` abstract all the e
 
 (a) *The project makes use of references in function declarations.*
 
-The project makes use of references in lots of newly defined functions of `ScoreLog` class. 
+The project makes use of pointers in lots of newly defined functions of `ScoreLog` class. 
 
 (b) *The project uses destructors appropriately.*
 
