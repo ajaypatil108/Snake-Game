@@ -1,12 +1,36 @@
-# C++ Nano degree Capstone : Snake Game 
+# C++ Nano-degree Capstone : Snake Game 
 
- I added features to the 2d snake game for the Capstone project in the [Udacity C++ Nanodegree Program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213). The starter code for this repo was inspired by [this](https://codereview.stackexchange.com/questions/212296/snake-game-in-c-with-sdl) excellent StackOverflow post and set of responses.
+ I added features to 2D snake game for the Capstone project in the [Udacity C++ Nanodegree Program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213). The starter code for this repo was inspired by [this](https://codereview.stackexchange.com/questions/212296/snake-game-in-c-with-sdl) excellent StackOverflow post and set of responses.
 
-<img src="snake_game.gif"/>
+The Capstone Project gave me a chance to integrate what I've learned throughout this program. 
 
-The Capstone Project gave me a chance to integrate what I've leart throughout this program. 
+In this project, I extended the Snake game by adding lots of new features, demonstrating that I can independently create applications using a wide range of C++ libraries & features.
 
-In this project, I extended the Snake game, following the principles I learnt throughout this Nanodegree Program. This project demonstrates that I can independently create applications using a wide range of C++ features.
+<img src="game.png"/>
+
+## Feature additions
+
+* **Score Logs**
+
+  Added ability to store `highest score` and `highest scorer` name with newly defined `ScoreLog()` class. The file structure used is .txt & is managed with `fstream` objects in the new class.  
+
+* **New console outputs**
+
+  - Program takes user name and presents the current high score to beat. Once game is terminated, console prints points needed to set high score if lost & congratulates upon setting high score. 
+
+    <img src="console.png"/>
+
+* **Game play with boundary wall**
+
+  - Added ability to play with a boundary wall. Snake dies if it touches the boundary wall! Pressing `b` key toggles the boundary during game play. The screenshot of the game above depicts the red wall that was being turned on during game play. 
+
+*  **Pause Game**
+
+  - Added ability to pause the game play. `Esc` key toggles between pause/resume. 
+
+* **SDL window to display score**
+
+  - Added a small SDL dialog that shows score upon termination of game. The window can seen the game screenshot above. 
 
 ## Dependencies for Running Locally
 * cmake >= 3.7
@@ -29,3 +53,51 @@ In this project, I extended the Snake game, following the principles I learnt th
 2. Make a build directory in the top level directory: `mkdir build && cd build`
 3. Compile: `cmake .. && make`
 4. Run it: `./SnakeGame`.
+
+## Capstone rubric criteria 
+
+**1. README, Compiling and Testing rubrics are met. **
+
+**2. Loops, Functions, I/0**
+
+(a) *The project demonstrates an understanding of C++ functions and control structures.*
+
+A variety of control structures are used in this project. The `RenderScoreMsg()` function declared in `snake.h` file line 30,  is used to display a SDL Window only if alive variable of snake is false. This function is used in `snake.cpp` on lines 71 & 45. Also, in `main()`, the console output to display depends on if user was able to beat the high score or not. If-else control structure is used to compare scores and display appropriate message. Lines 36-43 in main. 
+
+(b) *The project reads data from a file and process the data, or the program writes data to a file.*
+
+Also, the project reads and writes high scores to a external text file `highscore.txt`. This is implemented in `ParseLog()` and `WriteToLog` methods of the `ScoreLog`  class. The code can be found in `ScoreLog.cpp`
+
+(c) *The project accepts user input and processes the input.*
+
+The program also accepts user inputs which include `player name` on line 23 in `main.cpp`, new SDLK poll events, i.e. `ESC` key input to toggle pause/resume and `b` key press to toggle boundary. This code is in `controller.cpp` on lines 41-48.
+
+**2.  Object Oriented Programming**
+
+The code in `scorelog.h` and `scorelog.cpp` satisfies multiple Object Oriented Programming criteria.
+
+(a) *The project uses Object Oriented Programming techniques.*
+
+The project code is organized into classes with class attributes to hold the data, and class methods to perform tasks. Check `scorelog.h` for declarations of attributes and class methods. 
+
+(b) *Classes use appropriate access specifiers for class members.*
+
+All class data members are explicitly specified as public, protected, or private. Check `scorelog.h` to see access specifiers. Getters/Setters have appropriate specifiers and so do the private attributes. 
+
+(c) *Class constructors utilize member initialization lists.*
+
+A constructor for class `ScoreLog()` that takes an `int` and `std::string`  is defined in the  `ScoreLog.cpp` on line 10 and is used in `main.cpp` to create a ScoreLog object on line 16.
+
+(d) *Classes abstract implementation details from their interfaces.*
+
+Methods `ParseLog()` and `WriteToLog()` within `ScoreLog.cpp` abstract all the external file handling from the user. User does not have to worry about manipulating the .txt file at all. 
+
+**3. Memory Management**
+
+(a) *The project makes use of references in function declarations.*
+
+The project makes use of references in lots of newly defined functions of `ScoreLog` class. 
+
+(b) *The project uses destructors appropriately.*
+
+The project makes use of destructor for `ScoreLog()` class.

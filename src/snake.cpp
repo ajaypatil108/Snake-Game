@@ -1,7 +1,6 @@
 #include "snake.h"
 #include <cmath>
 #include <iostream>
-#include "scorelog.h"
 
 void Snake::Update(bool *boundary) {
   SDL_Point prev_cell{
@@ -43,7 +42,7 @@ void Snake::UpdateHead(bool *boundary) {
   if (*boundary){
     if (head_x > grid_width || head_y > grid_height || head_x < 0 || head_y < 0){
       alive = false;
-      RenderRelativeScoreMsg();
+      RenderScoreMsg();
     }
   }
   else{
@@ -69,7 +68,7 @@ void Snake::UpdateBody(SDL_Point &current_head_cell, SDL_Point &prev_head_cell) 
   for (auto const &item : body) {
     if (current_head_cell.x == item.x && current_head_cell.y == item.y) {
       alive = false;
-      RenderRelativeScoreMsg();                
+      RenderScoreMsg();                
     }
   }
 }
@@ -90,9 +89,9 @@ bool Snake::SnakeCell(int x, int y) {
 }
 
 
-void Snake::RenderRelativeScoreMsg(){
-    std::string msgText{"Score: " + std::to_string(*_score)};
-    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION, "You died!", msgText.c_str(), NULL);
+void Snake::RenderScoreMsg(){
+    std::string msgText{"Score: " + std::to_string(*_score) + ". Hope you enjoyed the game!"};
+    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION, "Snake is dead!", msgText.c_str(), NULL);
 }
 
 

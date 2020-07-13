@@ -19,7 +19,7 @@ int main() {
 
   std::string name;
   std::string answer;
-  std::cout << "Enter your name " << "\n"; 
+  std::cout << "Enter your name : " << " "; 
   std::cin >> name;
  
   std::cout << "Hey " << name << ", can you beat the high score of " << log.GetHighestScore() <<  " set by " << log.GetHighestScorePlayer() << "?" << "\n";

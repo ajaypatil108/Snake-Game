@@ -2,7 +2,6 @@
 #define SNAKE_H
 #include <vector>
 #include "SDL.h"
-#include "scorelog.h"
 
 class Snake {
  public:
@@ -28,7 +27,7 @@ class Snake {
   float head_x;
   float head_y;
   std::vector<SDL_Point> body;
-  void RenderRelativeScoreMsg();
+  void RenderScoreMsg();
 
  private:
   void UpdateHead(bool *boundary);
